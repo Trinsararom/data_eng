@@ -42,12 +42,13 @@ if search_input:
 else:
     filtered_df = df
 
+filtered_df = filtered_df[(filtered_df['Room size'] >= 18) & (filtered_df['Room size'] <= 400)]
 # filtered by variable
 col1 , col2  = st.columns(2)
 with col1:
     filter_LT = st.checkbox('Filter by 	Rent Prices')
     if filter_LT:
-        min_val, max_val = int(400), int(480000)
+        min_val, max_val = int(4000), int(480000)
         RP_min, RP_max = st.slider('Select a range of Rent Prices', min_val, max_val, (min_val, max_val))
         filtered_df = filtered_df[(filtered_df['Rent Prices'] >= RP_min) & (filtered_df['Rent Prices'] <= RP_max)]
     else:
